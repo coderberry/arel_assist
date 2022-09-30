@@ -1,14 +1,30 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
-require "rake/testtask"
+require "rspec/core/rake_task"
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << "test"
-  t.libs << "lib"
-  t.test_files = FileList["test/**/test_*.rb"]
-end
+RSpec::Core::RakeTask.new(:spec)
+GEM_NAME = "arel_assist"
+GEM_VERSION = ArelAssist::VERSION
 
 require "standard/rake"
+require "bump/tasks"
 
-task default: %i[test standard]
+task default: %i[spec standard]
+
+task :build do
+  system "gem build #{GEM_NAME}.gemspec"
+end
+
+task install: :build do
+  system "gem install #{GEM_NAME}-#{GEM_VERSION}.gem"
+end
+
+task publish: :build do
+  system "gem push #{GEM_NAME}-#{GEM_VERSION}.gem"
+  system "gem push --key github --host https://rubygems.pkg.github.com/coderberry #{GEM_NAME}-#{GEM_VERSION}.gem"
+end
+
+task :clean do
+  system "rm *.gem"
+end

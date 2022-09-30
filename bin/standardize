@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle exec magic_frozen_string_literal
+bundle exec standardrb --fix
+bundle exec sord gen ./sig/arel_assist.rbs

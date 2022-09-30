@@ -6,3 +6,10 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+/coverage
+*.gem
+.gemrc
+
+# rspec failure tracking
+.rspec_status
