@@ -2,11 +2,24 @@ PATH
   remote: .
   specs:
     arel_assist (0.1.0)
-      activerecord (>= 3.1.0, < 8)
+      activerecord (>= 6, < 8)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    actionpack (7.0.4)
+      actionview (= 7.0.4)
+      activesupport (= 7.0.4)
+      rack (~> 2.0, >= 2.2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actionview (7.0.4)
+      activesupport (= 7.0.4)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.1, >= 1.2.0)
     activemodel (7.0.4)
       activesupport (= 7.0.4)
     activerecord (7.0.4)
@@ -17,24 +30,48 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    appraisal (2.4.1)
+      bundler
+      rake
+      thor (>= 0.14.0)
     ast (2.4.2)
+    builder (3.2.4)
     bump (0.10.0)
     byebug (11.1.3)
     codecov (0.6.0)
       simplecov (>= 0.15, < 0.22)
     coderay (1.1.3)
+    combustion (1.3.7)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
+      thor (>= 0.14.6)
     commander (4.6.0)
       highline (~> 2.0.0)
     concurrent-ruby (1.1.10)
+    crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    erubi (1.11.0)
     highline (2.0.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     json (2.6.2)
+    loofah (2.19.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.5.9)
     magic_frozen_string_literal (1.2.0)
     method_source (1.0.0)
     minitest (5.16.3)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.22.1)
     parlour (5.0.0)
       commander (~> 4.5)
@@ -49,6 +86,22 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
+    racc (1.6.0)
+    rack (2.2.4)
+    rack-test (2.0.2)
+      rack (>= 1.3)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
+    rails-html-sanitizer (1.4.3)
+      loofah (~> 2.3)
+    railties (7.0.4)
+      actionpack (= 7.0.4)
+      activesupport (= 7.0.4)
+      method_source
+      rake (>= 12.2)
+      thor (~> 1.0)
+      zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.6.0)
@@ -97,20 +150,26 @@ GEM
     standard (1.16.1)
       rubocop (= 1.35.1)
       rubocop-performance (= 1.14.3)
+    thor (1.2.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
     webrick (1.7.0)
     yard (0.9.28)
       webrick (~> 1.7.0)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
+  appraisal
   arel_assist!
   bump
   codecov
+  combustion
+  database_cleaner
   magic_frozen_string_literal
   minitest (~> 5.0)
   pry-byebug
