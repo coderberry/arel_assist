@@ -8,7 +8,16 @@ if ENV.fetch("COVERAGE", false)
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
+require "rspec"
 require "arel_assist"
+require "fileutils"
+require "whoop"
+require "pry"
+require "combustion"
+require "database_cleaner"
+require "env/models"
+
+Combustion.initialize! :active_record
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -20,4 +29,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  DatabaseCleaner.strategy = :transaction
+
+  config.before { DatabaseCleaner.start }
+  config.after { DatabaseCleaner.clean }
 end

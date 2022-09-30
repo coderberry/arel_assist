@@ -1,6 +1,128 @@
 module ArelAssist
+  extend ArelAssist
   VERSION: untyped
 
-  class Error < StandardError
-  end
+  # sord omit - no YARD type given for "base", using untyped
+  # sord omit - no YARD return type given, using untyped
+  def self.included: (untyped base) -> untyped
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: COUNT("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_count(Post.arel_table[:days_active])
+  # #=> 'COUNT("member_summaries"."days_active")'
+  # ```
+  def arel_count: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: date_trunc('<date-part>', "<table-name>"."<column-name>")
+  # 
+  # _@param_ `date_part` — - one of the following: year, month, day, hour, minute, second, millisecond, microsecond
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_date_trunc('day', MemberSummary.arel_table[:created_at])
+  # #=> "date_trunc('day', \"member_summaries\".\"created_at\")"
+  # ```
+  def arel_date_trunc: ((String | Symbol) date_part, Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: MAX("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at])
+  # #=> 'MAX("activities"."occurred_at")'
+  # ```
+  def arel_max: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: MIN("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at])
+  # #=> 'MIN("activities"."occurred_at")'
+  # ```
+  # 
+  # with 'AS'
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at]).as("first_activity_occurred_at")
+  # #=> 'MIN("activities"."occurred_at") AS first_activity_occurred_at'
+  # ```
+  def arel_min: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord omit - no YARD type given for "node", using untyped
+  # sord omit - no YARD return type given, using untyped
+  def sqlv: (untyped node) -> untyped
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: COUNT("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_count(Post.arel_table[:days_active])
+  # #=> 'COUNT("member_summaries"."days_active")'
+  # ```
+  def self.arel_count: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: date_trunc('<date-part>', "<table-name>"."<column-name>")
+  # 
+  # _@param_ `date_part` — - one of the following: year, month, day, hour, minute, second, millisecond, microsecond
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_date_trunc('day', MemberSummary.arel_table[:created_at])
+  # #=> "date_trunc('day', \"member_summaries\".\"created_at\")"
+  # ```
+  def self.arel_date_trunc: ((String | Symbol) date_part, Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: MAX("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at])
+  # #=> 'MAX("activities"."occurred_at")'
+  # ```
+  def self.arel_max: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord warn - Arel::Attributes::Attribute wasn't able to be resolved to a constant in this project
+  # sord warn - Arel::Nodes::NamedFunction wasn't able to be resolved to a constant in this project
+  # Generates SQL: MIN("<table-name>"."<column-name>")
+  # 
+  # _@param_ `field`
+  # 
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at])
+  # #=> 'MIN("activities"."occurred_at")'
+  # ```
+  # 
+  # with 'AS'
+  # ```ruby
+  # arel_max(Activity.arel_table[:occurred_at]).as("first_activity_occurred_at")
+  # #=> 'MIN("activities"."occurred_at") AS first_activity_occurred_at'
+  # ```
+  def self.arel_min: (Arel::Attributes::Attribute field) -> Arel::Nodes::NamedFunction
+
+  # sord omit - no YARD type given for "node", using untyped
+  # sord omit - no YARD return type given, using untyped
+  def self.sqlv: (untyped node) -> untyped
 end

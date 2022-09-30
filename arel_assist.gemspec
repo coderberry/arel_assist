@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord", ">= 6", "< 8"
 
   spec.add_development_dependency "appraisal"
+  spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "magic_frozen_string_literal"
   spec.add_development_dependency "combustion"
   spec.add_development_dependency "database_cleaner"
@@ -43,4 +44,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sord"
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "codecov"
+  spec.add_development_dependency "whoop"
 end
